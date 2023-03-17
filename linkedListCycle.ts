@@ -10,13 +10,14 @@
  * }
  */
 
-function middleNode(head: ListNode | null): ListNode | null {
+function detectCycle(head: ListNode | null): ListNode | null {
   if (!head) return null;
-  let currentNode: ListNode = head;
-  let currentNodeTwo: ListNode = head;
-  while (currentNodeTwo && currentNodeTwo.next) {
-    currentNodeTwo = currentNodeTwo?.next?.next;
-    currentNode = currentNode?.next;
+  let visitSet = new Set();
+  let currentNode = head;
+  while (currentNode != null) {
+    if (visitSet.has(currentNode)) return currentNode;
+    visitSet.add(currentNode);
+    currentNode = currentNode.next;
   }
-  return currentNode;
+  return null;
 }
