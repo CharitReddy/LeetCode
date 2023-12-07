@@ -1,9 +1,9 @@
-function numIdenticalPairs(nums) {
-  console.log(Math.max(...nums));
+function numIdenticalPairs(nums: number[]): number {
   let goodPairs = 0;
   let res = new Array(Math.max(...nums) + 1).fill(0);
-  console.log(res);
   for (let i = 0; i < nums.length; i++) {
+    console.log(res);
+
     if (res[nums[i]]) {
       goodPairs += res[nums[i]];
     }
