@@ -24,3 +24,6 @@ function mergeTwoLists(
   list2.next = mergeTwoLists(list1, list2.next);
   return list2;
 }
+
+mergeTwoLists([1, 2, 4], [1, 3, 4]);
+// Output: [1,1,2,3,4,4]
