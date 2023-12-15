@@ -1,8 +1,7 @@
-function isAnagram(s, t) {
+function isAnagram(s: string, t: string): boolean {
   let charMap = new Map();
-  let repeatCount = s.length;
+  let repeatCount = Math.max(s.length, t.length);
   for (let i = 0; i < s.length; i++) {
-    console.log(charMap);
     const currChar = s[i];
     if (charMap.has(currChar)) {
       charMap.set(currChar, charMap.get(currChar) + 1);
@@ -19,7 +18,13 @@ function isAnagram(s, t) {
       }
     }
   }
+
+  let maxSize = Math.max(s.length, t.length) - Math.min(s.length, t.length);
+  if (maxSize > 0) {
+    return Math.max(s.length, t.length) - repeatCount === 0;
+  }
   return repeatCount === 0;
 }
 
-console.log(isAnagram("rat", "car"));
+isAnagram("anagram", "nagaram");
+// Output: true;
