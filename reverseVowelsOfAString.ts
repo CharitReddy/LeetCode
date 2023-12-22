@@ -1,5 +1,5 @@
-function reverseVowels(s) {
-  function isVowel(char) {
+function reverseVowels(s: string): string {
+  function isVowel(char: string) {
     char = char.toLowerCase();
     return (
       char === "a" ||
@@ -10,24 +10,25 @@ function reverseVowels(s) {
     );
   }
   let sArray = s.split("");
-  console.log(sArray);
   let left = 0;
   let right = sArray.length - 1;
-  while (left <= right) {
+  while (left < right) {
     if (isVowel(sArray[left]) && isVowel(sArray[right])) {
       let temp = sArray[left];
       sArray[left] = sArray[right];
       sArray[right] = temp;
-      left++;
-      right--;
     } else if (isVowel(sArray[left]) && !isVowel(sArray[right])) {
       right--;
+      continue;
     } else if (!isVowel(sArray[left]) && isVowel(sArray[right])) {
       left++;
+      continue;
     }
-    console.log(sArray);
+    left++;
+    right--;
   }
   return sArray.join("");
 }
 
 reverseVowels("hello");
+// Output: "holle"
